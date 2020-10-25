@@ -5,8 +5,6 @@ from keras.layers import Dense, LSTM, LeakyReLU, Dropout
 def get_model(num_units: int = 64, learning_rate: float = 1e-4, activation_function: str = 'sigmoid'):
     adam = Adam(lr=learning_rate)
     loss_function = 'mse'
-    #batch_size = 5
-    #num_epochs = 50
 
     # Initialize the RNN
     model = Sequential()

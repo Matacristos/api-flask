@@ -8,6 +8,13 @@ verify_ssl = true
 [packages]
 flask = "*"
 gunicorn = "*"
+pandas = "*"
+matplotlib = "*"
+keras = "*"
+jupyter = "*"
+seaborn = "*"
+sklearn = "*"
+tensorflow = "*"
 
 [requires]
-python_version = "3.9"
+python_version = "3.7"
