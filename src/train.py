@@ -10,7 +10,7 @@ def train(
         model,
         batch_size: int = 10,
         num_epochs: int = 5,
-        past_history: int = 50,
+        past_history: int = 72,
         future_target: int = 0,
         train_split_ratio: float = 1.0,
         validation_split_ratio: float = 0.0
@@ -49,6 +49,8 @@ def train(
     )
 
     loss = history.history['loss']
-    val_loss = history.history['val_loss']
-
-    return loss, val_loss
+    if validation_split_ratio > 0:
+        val_loss = history.history['val_loss']
+        return loss, val_loss
+    
+    return loss, 0

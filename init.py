@@ -1,4 +1,8 @@
 from flask import Flask, send_file
+from src.predict import predict
+from tensorflow.keras.models import load_model
+
+
 app = Flask(__name__)
 
 
@@ -9,7 +13,9 @@ def hello():
 
 @app.route("/getGraph", methods=['GET'])
 def get_graph():
-    return send_file('images/graph.png', mimetype='image/png')
+    model = load_model('./models/model.h5')
+    predict('./data/bitcoin.csv', model)
+    return send_file('images/prediction.png', mimetype='image/png')
 
 
 if __name__ == "__main__":
