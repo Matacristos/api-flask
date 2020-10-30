@@ -4,7 +4,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 from sklearn.preprocessing import MinMaxScaler
 
-from utils import univariate_data, get_test_data
+from src.utils import univariate_data, get_test_data
 
 def predict(
         csv_path: str,

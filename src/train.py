@@ -2,7 +2,7 @@ import numpy as np
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 
-from utils import univariate_data
+from src.utils import univariate_data
 
 
 def train(
