@@ -11,7 +11,11 @@ Flask basic server
 
 3. Run:
     * pipenv run python3 init.py
-    
+
+### Run with Docker
+
+1. Build image: `docker build -t api-flask .`
+2. Run container: `docker run -p 5000:5000 api-flask`
 
 ### Dataset generation
 __The csv has a header row__, be careful
