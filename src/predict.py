@@ -1,3 +1,4 @@
+import os
 import numpy as np 
 import pandas as pd
 import seaborn as sns
@@ -14,7 +15,7 @@ def predict(
         num_hours_past: int = 120
     ):
 
-    data = pd.read_csv(csv_path, names=['Date', 'Close'])
+    data = pd.read_csv(csv_path, names=['Date', 'Close'], header=0)
     data = data.sort_values('Date')
     price = data[['Close']]
 
@@ -35,6 +36,7 @@ def predict(
     original = pd.DataFrame(min_max_scaler.inverse_transform(y_test))
     predictions = pd.DataFrame(min_max_scaler.inverse_transform(model.predict(x_test)))
 
+    plt.clf()
     ax = sns.lineplot(x=original.index, y=original[0], label="Real Data", color='royalblue')
     ax = sns.lineplot(x=predictions.index, y=predictions[0], label="Prediction", color='tomato')
     ax.set_title('Bitcoin price', size = 14, fontweight='bold')
@@ -42,6 +44,6 @@ def predict(
     ax.set_ylabel("Cost (USD)", size = 14)
     ax.set_xticklabels('', size=10)
     #ax.get_figure().savefig('../images/prediction.png')
-    plt.savefig('../images/prediction.png')
+    plt.savefig(os.getcwd() + '/images/prediction.png')
     
 
