@@ -21,3 +21,16 @@ Flask basic server
 __The csv has a header row__, be careful
 - `src/coindesk.py populate` to populate data csv
 - `src/coindesk.py update` to update with latest data
+
+## Train model from scratch
+
+Open the Python terminal and run:
+
+```
+from model import get_model
+from train import train
+
+train(csv_path='./data/bitcoin.new.csv', model=model)
+
+model.save('./models/model.h5')
+```
