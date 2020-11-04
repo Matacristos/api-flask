@@ -98,7 +98,7 @@ def populate():
     n_months = 24
     #n_months = 3
     records = run_for_last_n_months(n_months)
-    dataframe = pd.DataFrame.from_records(records, columns=["datetime", "value"])
+    dataframe = pd.DataFrame.from_records(records, columns=['Date', 'Close'])
     write_dataframe_to_csv(dataframe)
 
 
