@@ -15,7 +15,7 @@ def predict(
         num_hours_past: int = 120
     ):
 
-    data = pd.read_csv(csv_path, names=['Date', 'Close'], header=0)
+    data = pd.read_csv(csv_path, names=['Date', 'Close'])
     data = data.sort_values('Date')
     price = data[['Close']]
 

@@ -14,7 +14,7 @@ def hello():
 @app.route("/getGraph", methods=['GET'])
 def get_graph():
     model = load_model('./models/model.h5')
-    predict('./data/bitcoin.csv', model)
+    predict('./data/bitcoin.new.csv', model)
     return send_file('images/prediction.png', mimetype='image/png')
 
 
