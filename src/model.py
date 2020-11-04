@@ -4,16 +4,25 @@ from keras.layers import Dense, LSTM, LeakyReLU, Dropout
 
 def get_model(num_units: int = 64, learning_rate: float = 1e-4, activation_function: str = 'sigmoid'):
     adam = Adam(lr=learning_rate)
-    loss_function = 'mse'
+    loss_function = 'mean_absolute_error'
 
-    # Initialize the RNN
-    model = Sequential()
-    model.add(LSTM(units = num_units, activation=activation_function, input_shape=(None, 1)))
-    model.add(LeakyReLU(alpha=0.5))
-    model.add(Dropout(0.1))
-    model.add(Dense(units = 1))
+    regressor = Sequential()
+    # First LSTM layer with Dropout regularisation
+    regressor.add(LSTM(units=50, return_sequences=True, input_shape=(None,1)))
+    regressor.add(Dropout(0.2))
+    # Second LSTM layer
+    regressor.add(LSTM(units=50, return_sequences=True))
+    regressor.add(Dropout(0.2))
+    # Third LSTM layer
+    regressor.add(LSTM(units=50, return_sequences=True))
+    regressor.add(Dropout(0.5))
+    # Fourth LSTM layer
+    regressor.add(LSTM(units=50))
+    regressor.add(Dropout(0.5))
+    # The output layer
+    regressor.add(Dense(units=1))
 
     # Compiling the RNN
-    model.compile(optimizer=adam, loss=loss_function)
+    regressor.compile(optimizer=adam, loss=loss_function)
 
-    return model
+    return regressor
