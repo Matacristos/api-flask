@@ -110,7 +110,9 @@ def check_data():
             start = pd.to_datetime(df["datetime"][index])
             end = pd.to_datetime(df["datetime"][index+1])
             diff_seconds = (end - start).total_seconds()
-            if diff_seconds != 3600.0:
+            diff_expected = 3600.0
+            #if diff_seconds != diff_expected:
+            if diff_seconds < diff_expected - 100 or diff_seconds > diff_expected + 100:
                 print(f"Error diffing datetime <{diff_seconds}> between {index}-{index+1}")
         except KeyError:
             return
