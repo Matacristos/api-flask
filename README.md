@@ -25,6 +25,7 @@ Flask basic server
 __The csv has a header row__, be careful
 - `src/coindesk.py populate` to populate data csv
 - `src/coindesk.py update` to update with latest data
+- `src/coindesk.py check` to check diff between dates
 
 * Alternative dataset with script: 
 - `src/bitflyer.py` to populate data csv
