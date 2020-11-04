@@ -31,13 +31,16 @@ __The csv has a header row__, be careful
 
 ## Train model from scratch
 
+`pipenv shell`
+
 Open the Python terminal and run:
 
 ```
 from model import get_model
 from train import train
 
-train(csv_path='./data/bitcoin.new.csv', model=model)
+model = get_model()
+train(csv_path='./data/bitcoin.new.csv', model=model, num_epochs=50)
 
 model.save('./models/model.h5')
 ```
