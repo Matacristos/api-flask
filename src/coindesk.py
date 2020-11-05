@@ -30,7 +30,7 @@ def wait():
 
 
 def write_dataframe_to_csv(dataframe, path=DATA_PATH):
-    index_col = "datetime"
+    index_col = "Date"
     dataframe = dataframe.drop_duplicates(index_col).sort_values(by=[index_col])
     return dataframe.to_csv(path, sep=',', line_terminator='\n', index=False)
 
@@ -107,8 +107,8 @@ def check_data():
     
     for index in range(len(df)):
         try:
-            start = pd.to_datetime(df["datetime"][index])
-            end = pd.to_datetime(df["datetime"][index+1])
+            start = pd.to_datetime(df['Date'][index])
+            end = pd.to_datetime(df['Date'][index+1])
             diff_seconds = (end - start).total_seconds()
             diff_expected = 3600.0
             #if diff_seconds != diff_expected:
@@ -132,7 +132,7 @@ def update():
 
     # else fetch between dates(latest_date, now)
     records = run_monthly(DEFAULT_END_DATE)
-    dataframe = df.append(pd.DataFrame.from_records(records, columns=["datetime", "value"]))
+    dataframe = df.append(pd.DataFrame.from_records(records, columns=['Date', 'Close']))
     print(dataframe.tail())
     write_dataframe_to_csv(dataframe)
 
